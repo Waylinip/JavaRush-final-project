@@ -1,11 +1,14 @@
 spring.cache.type: none
 spring:
-  init:
-    mode: always
-  mail:
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
   datasource:
     url: jdbc:postgresql://localhost:5433/jira-test
     username: jira
     password: JiraRush
+  mail:
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+  config:
+    import: classpath:/application-secret.yml
+  init:
+    mode: always
+
