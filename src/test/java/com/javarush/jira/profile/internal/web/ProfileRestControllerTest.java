@@ -154,7 +154,7 @@ class ProfileRestControllerTest extends AbstractControllerTest {
     @MockBean
     private MailService mailService;
 
-    // Успешное получение профиля для user
+    // Успешно получаем профиль для user
     @Test
     @WithUserDetails(USER_MAIL)
     void getUserProfile() throws Exception {
@@ -164,7 +164,7 @@ class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(content().json(objectMapper.writeValueAsString(ProfileTestData.USER_PROFILE_TO), true));
     }
 
-    // Успешное получение профиля для guest
+    // спешно получаем профиль для guest
     @Test
     @WithUserDetails(GUEST_MAIL)
     void getGuestProfile() throws Exception {
@@ -205,7 +205,7 @@ class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isUnprocessableEntity());
     }
 
-    // Неизвестное уведомление — 422
+    // Неизвестное уведомление(422)
     @Test
     @WithUserDetails(USER_MAIL)
     void updateUnknownNotification() throws Exception {
@@ -216,7 +216,7 @@ class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isUnprocessableEntity());
     }
 
-    // Неизвестный тип контакта — 422
+    // Неизвестный тип контакта (422)
     @Test
     @WithUserDetails(USER_MAIL)
     void updateUnknownContact() throws Exception {
@@ -227,7 +227,7 @@ class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isUnprocessableEntity());
     }
 
-    // HTML в контактах — опасно, 422
+    // HTML в контактах — опасно(422)
     @Test
     @WithUserDetails(USER_MAIL)
     void updateContactHtmlUnsafe() throws Exception {
@@ -238,7 +238,7 @@ class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isUnprocessableEntity());
     }
 
-    // Неавторизованный пользователь пытается обновить профиль — 401
+    // Неавторизованный пользователь пытается обновить профиль(401)
     @Test
     @WithAnonymousUser
     void updateUnauthorized() throws Exception {

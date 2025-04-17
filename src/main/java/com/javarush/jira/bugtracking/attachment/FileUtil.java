@@ -28,7 +28,7 @@ public class FileUtil {
 
         try {
             Path dirPath = Paths.get(directoryPath);
-            Files.createDirectories(dirPath); // безопасно, если уже существует — ничего не делает
+            Files.createDirectories(dirPath);
 
             Path filePath = dirPath.resolve(fileName);
             Files.write(filePath, multipartFile.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
@@ -37,7 +37,21 @@ public class FileUtil {
         }
     }
 //was
-
+//public static void upload(MultipartFile multipartFile, String directoryPath, String fileName) {
+//    if (multipartFile.isEmpty()) {
+//        throw new IllegalRequestDataException("Select a file to upload.");
+//    }
+//
+//    File dir = new File(directoryPath);
+//    if (dir.exists() || dir.mkdirs()) {
+//        File file = new File(directoryPath + fileName);
+//        try (OutputStream outStream = new FileOutputStream(file)) {
+//            outStream.write(multipartFile.getBytes());
+//        } catch (IOException ex) {
+//            throw new IllegalRequestDataException("Failed to upload file" + multipartFile.getOriginalFilename());
+//        }
+//    }
+//}
     public static Resource download(String fileLink) {
         Path path = Paths.get(fileLink);
         try {
